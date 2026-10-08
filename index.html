@@ -1,280 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Gen X Women in The Villages</title>
-  <meta name="description" content="Events and activities for Gen X women living in The Villages, Florida. Check the calendar for what's happening this month.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --coral: #FF6B6B;
-      --teal: #2EC4B6;
-      --deep-teal: #1A9B8E;
-      --warm-cream: #FFF8F0;
-      --soft-purple: #7B68A6;
-      --dark-text: #2D2A32;
-      --light-text: #5A5560;
-      --white: #FFFFFF;
-      --shadow: 0 10px 40px rgba(45, 42, 50, 0.12);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Poppins', system-ui, sans-serif;
-      background: linear-gradient(160deg, #FFF8F0 0%, #FFE8E0 40%, #E8F8F6 100%);
-      color: var(--dark-text);
-      min-height: 100vh;
-      line-height: 1.6;
-    }
-
-    /* Decorative top bar */
-    .top-bar {
-      height: 6px;
-      background: linear-gradient(90deg, var(--coral), var(--teal), var(--soft-purple));
-    }
-
-    header {
-      text-align: center;
-      padding: 2.5rem 1.5rem 1.5rem;
-      position: relative;
-    }
-
-    .badge {
-      display: inline-block;
-      background: var(--teal);
-      color: white;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 0.35rem 1rem;
-      border-radius: 999px;
-      margin-bottom: 1rem;
-    }
-
-    h1 {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(1.9rem, 5vw, 2.8rem);
-      font-weight: 700;
-      color: var(--dark-text);
-      line-height: 1.2;
-      margin-bottom: 0.5rem;
-    }
-
-    h1 span {
-      color: var(--coral);
-    }
-
-    .subtitle {
-      font-size: 1.05rem;
-      color: var(--light-text);
-      max-width: 520px;
-      margin: 0 auto 0.25rem;
-    }
-
-    .location {
-      font-size: 0.95rem;
-      color: var(--deep-teal);
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.35rem;
-    }
-
-    .location svg {
-      width: 16px;
-      height: 16px;
-      fill: var(--deep-teal);
-    }
-
-    main {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 1rem 1.25rem 3rem;
-    }
-
-    .intro {
-      text-align: center;
-      background: var(--white);
-      border-radius: 16px;
-      padding: 1.25rem 1.5rem;
-      margin-bottom: 1.75rem;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(46, 196, 182, 0.15);
-    }
-
-    .intro p {
-      color: var(--light-text);
-      font-size: 1rem;
-    }
-
-    .calendar-card {
-      background: var(--white);
-      border-radius: 20px;
-      padding: 1.25rem;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(255, 107, 107, 0.12);
-      overflow: hidden;
-    }
-
-    .calendar-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-bottom: 1rem;
-      padding-bottom: 0.85rem;
-      border-bottom: 2px solid #F0EDE8;
-    }
-
-    .calendar-header h2 {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: 1.35rem;
-      color: var(--dark-text);
-    }
-
-    .calendar-header .hint {
-      font-size: 0.85rem;
-      color: var(--light-text);
-      background: #F8F5F2;
-      padding: 0.3rem 0.75rem;
-      border-radius: 8px;
-    }
-
-    .calendar-wrapper {
-      position: relative;
-      width: 100%;
-      border-radius: 12px;
-      overflow: hidden;
-      background: #fafafa;
-    }
-
-    /* Responsive iframe container */
-    .calendar-wrapper iframe {
-      display: block;
-      width: 100%;
-      height: 650px;
-      border: none;
-      border-radius: 12px;
-    }
-
-    @media (max-width: 640px) {
-      .calendar-wrapper iframe {
-        height: 520px;
-      }
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem 1.5rem 2.5rem;
-      color: var(--light-text);
-      font-size: 0.9rem;
-    }
-
-    footer a {
-      color: var(--deep-teal);
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    .footer-note {
-      margin-top: 0.5rem;
-      font-size: 0.8rem;
-      opacity: 0.85;
-    }
-
-    /* Subtle decorative shapes */
-    .blob {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(60px);
-      opacity: 0.35;
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    .blob-1 {
-      width: 280px;
-      height: 280px;
-      background: var(--coral);
-      top: -80px;
-      right: -60px;
-    }
-
-    .blob-2 {
-      width: 220px;
-      height: 220px;
-      background: var(--teal);
-      bottom: 40%;
-      left: -80px;
-    }
+    :root { --ink:#1c2b4a; --blush:#c94b6a; --cream:#f6f0e6; --paper:#fffdf9; --muted:#6d645b; --line:#e4d9c8; }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--cream); color:var(--ink); font-family:Outfit, system-ui, sans-serif; line-height:1.55; }
+    header { position:sticky; top:0; z-index:5; background:rgba(255,253,249,.95); border-bottom:1px solid var(--line); }
+    nav { max-width:72rem; margin:0 auto; padding:.75rem 1.25rem; display:flex; justify-content:space-between; align-items:center; }
+    .mark { font-family:"Cormorant Garamond", Georgia, serif; font-size:1.35rem; text-decoration:none; color:inherit; }
+    .mark em { color:var(--blush); font-style:italic; }
+    .jump { font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; text-decoration:none; color:inherit; border:1px solid var(--line); padding:.4rem .7rem; }
+    .hero { display:block; width:100%; height:auto; }
+    .intro { max-width:42rem; margin:0 auto; padding:3.5rem 1.25rem 1.5rem; text-align:center; }
+    .kicker { letter-spacing:.22em; text-transform:uppercase; color:var(--blush); font-size:.72rem; font-weight:600; }
+    h1, h2 { font-family:"Cormorant Garamond", Georgia, serif; font-weight:500; line-height:.95; margin:.4rem 0 0; }
+    h1 { font-size:clamp(3rem, 8vw, 4.5rem); }
+    .lede { color:var(--muted); font-size:1.1rem; }
+    #this-month { max-width:64rem; margin:0 auto; padding:0 1.25rem 2rem; text-align:center; }
+    h2 { font-size:2.2rem; }
+    .cal { max-width:56rem; margin:1rem auto 0; background:var(--paper); border:1px solid var(--line); padding:.6rem; }
+    iframe { width:100%; height:720px; border:0; background:var(--paper); }
+    form { max-width:32rem; margin:1rem auto 0; display:flex; flex-direction:column; gap:.6rem; }
+    input { border:1px solid var(--line); background:var(--cream); padding:.8rem 1rem; text-align:center; font:inherit; }
+    button { font:inherit; cursor:pointer; }
+    .go { background:var(--ink); color:var(--paper); border:0; letter-spacing:.16em; text-transform:uppercase; font-size:.72rem; padding:.85rem 1.2rem; }
+    .note, .err { color:var(--muted); font-size:.9rem; }
+    .err { color:var(--blush); }
+    .change { background:none; border:0; color:var(--muted); letter-spacing:.14em; text-transform:uppercase; font-size:.72rem; text-decoration:underline; margin-left:.6rem; }
+    .acts { max-width:64rem; margin:0 auto; padding:0 1.25rem 3rem; }
+    .acts p { text-align:center; letter-spacing:.22em; text-transform:uppercase; color:var(--blush); font-size:.72rem; font-weight:600; }
+    .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:.7rem; list-style:none; padding:0; margin:0; }
+    @media (min-width:700px) { .grid { grid-template-columns:repeat(7,1fr); } }
+    .grid button { background:none; border:0; padding:0; width:100%; }
+    .grid img { width:100%; aspect-ratio:1; object-fit:cover; object-position:top; border:1px solid var(--line); display:block; }
+    .grid span { display:block; margin-top:.4rem; font-size:.68rem; line-height:1.2; }
+    footer { border-top:1px solid var(--line); text-align:center; padding:2rem 1rem; }
+    footer .name { font-family:"Cormorant Garamond", Georgia, serif; font-style:italic; font-size:1.4rem; }
+    #lightbox { display:none; position:fixed; inset:0; background:rgba(28,43,74,.82); z-index:20; align-items:center; justify-content:center; padding:1rem; }
+    #lightbox.open { display:flex; }
+    #lightbox img { max-height:88vh; max-width:100%; }
+    #close { position:absolute; top:1rem; right:1rem; background:none; border:0; color:#fffdf9; letter-spacing:.16em; text-transform:uppercase; font-size:.72rem; }
   </style>
 </head>
 <body>
-  <div class="top-bar"></div>
-
   <header>
-    <div class="blob blob-1"></div>
-    <div class="badge">Community Calendar</div>
-    <h1>Gen X Women <span>in The Villages</span></h1>
-    <p class="subtitle">Your go-to place for events, gatherings &amp; activities</p>
-    <p class="location">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-      The Villages, Florida
-    </p>
+    <nav>
+      <a class="mark" href="#top">Gen X Women <em>in The Villages</em></a>
+      <a class="jump" href="#this-month">This month</a>
+    </nav>
   </header>
-
-  <main>
-    <div class="intro">
-      <p>Click any event on the calendar to see details, times, and locations. Updated monthly for Gen X women living in The Villages.</p>
-    </div>
-
-    <div class="calendar-card">
-      <div class="calendar-header">
-        <h2>This Month’s Events</h2>
-        <span class="hint">Click an event for details</span>
-      </div>
-
-      <div class="calendar-wrapper">
-        <!-- 
-          REPLACE the src below with your own Google Calendar embed code.
-          How to get it:
-          1. Go to Google Calendar → Settings for your calendar
-          2. Scroll to "Integrate calendar"
-          3. Copy the Embed code and paste the whole <iframe> here
-        -->
-        <iframe 
-          src="https://calendar.google.com/calendar/embed?height=650&wkst=1&bgcolor=%23ffffff&ctz=America%2FNew_York&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=1&showCalendars=0&showTz=0&mode=MONTH" 
-          style="border:0" 
-          width="100%" 
-          height="650" 
-          frameborder="0" 
-          scrolling="no"
-          title="Gen X Women in The Villages Events Calendar">
-        </iframe>
-      </div>
-    </div>
+  <main id="top">
+    <img class="hero" src="hero.jpg" alt="Gen X Women in The Villages">
+    <section class="intro">
+      <p class="kicker">The Villages, Florida</p>
+      <h1>Find your tribe.</h1>
+      <p class="lede">What’s happening this month. Click an event for the time and place.</p>
+    </section>
+    <section id="this-month">
+      <h2>This month <button class="change" id="change" type="button" hidden>Change</button></h2>
+      <div id="frame" class="cal" hidden></div>
+      <form id="form">
+        <p class="note">Connect the group Google Calendar. Paste the embed link or the calendar email.</p>
+        <input id="cal" placeholder="Calendar email or embed link" autocomplete="off" spellcheck="false">
+        <button class="go" type="submit">Connect calendar</button>
+        <p class="err" id="err" hidden></p>
+      </form>
+    </section>
+    <section class="acts">
+      <p>In the circle</p>
+      <ul class="grid">
+        <li><button type="button" data-full="holiday.jpg"><img src="holiday.jpg" alt="Holiday party"><span>Holiday party</span></button></li>
+        <li><button type="button" data-full="shoebox.jpg"><img src="shoebox.jpg" alt="Operation Shoebox"><span>Operation Shoebox</span></button></li>
+        <li><button type="button" data-full="book.jpg"><img src="book.jpg" alt="Fantasy book club"><span>Fantasy book club</span></button></li>
+        <li><button type="button" data-full="cooking.jpg"><img src="cooking.jpg" alt="Cooking class"><span>Cooking class</span></button></li>
+        <li><button type="button" data-full="pickle-central.jpg"><img src="pickle-central.jpg" alt="Central pickleball"><span>Central pickleball</span></button></li>
+        <li><button type="button" data-full="pickle-south.jpg"><img src="pickle-south.jpg" alt="Southern pickleball"><span>Southern pickleball</span></button></li>
+        <li><button type="button" data-full="mahjong.jpg"><img src="mahjong.jpg" alt="Mah Jongg"><span>Mah Jongg</span></button></li>
+      </ul>
+    </section>
   </main>
-
   <footer>
-    <p>Made with ♥ for Gen X women in The Villages</p>
-    <p class="footer-note">Have an event to add? Reach out to the group organizers.</p>
+    <div class="name">Gen X Women in The Villages</div>
+    <div class="kicker">Find your tribe</div>
   </footer>
-
-  <div class="blob blob-2"></div>
+  <div id="lightbox">
+    <button id="close" type="button">Close</button>
+    <img id="big" alt="">
+  </div>
+  <script>
+    var KEY = "gx-calendar-src";
+    function toSrc(raw) {
+      var text = (raw || "").trim();
+      if (!text) return "";
+      var m = text.match(/src\s*=\s*["']([^"']+)["']/i);
+      if (m) text = m[1];
+      if (/^https?:\/\//i.test(text)) {
+        var url = new URL(text);
+        if (url.hostname.replace(/^www\./, "") !== "calendar.google.com") return "";
+        url.searchParams.set("ctz", "America/New_York");
+        url.searchParams.set("mode", "MONTH");
+        return url.toString();
+      }
+      if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(text)) {
+        return "https://calendar.google.com/calendar/embed?src=" + encodeURIComponent(text) + "&ctz=America%2FNew_York&mode=MONTH";
+      }
+      return "";
+    }
+    function show(src) {
+      document.getElementById("form").hidden = true;
+      document.getElementById("change").hidden = false;
+      var box = document.getElementById("frame");
+      box.hidden = false;
+      box.innerHTML = '<iframe title="Group calendar, month view" src="' + src.replace(/"/g, """) + '"></iframe>';
+    }
+    var saved = "";
+    try { saved = localStorage.getItem(KEY) || ""; } catch (e) {}
+    if (saved) show(saved);
+    document.getElementById("form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      var next = toSrc(document.getElementById("cal").value);
+      var err = document.getElementById("err");
+      if (!next) { err.hidden = false; err.textContent = "Use a Google Calendar embed link, or the calendar email."; return; }
+      try { localStorage.setItem(KEY, next); } catch (e) {}
+      show(next);
+    });
+    document.getElementById("change").addEventListener("click", function () {
+      try { localStorage.removeItem(KEY); } catch (e) {}
+      document.getElementById("frame").hidden = true;
+      document.getElementById("frame").innerHTML = "";
+      document.getElementById("form").hidden = false;
+      this.hidden = true;
+    });
+    var light = document.getElementById("lightbox");
+    document.querySelectorAll("[data-full]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        document.getElementById("big").src = btn.getAttribute("data-full");
+        document.getElementById("big").alt = btn.querySelector("span").textContent;
+        light.classList.add("open");
+      });
+    });
+    function close() { light.classList.remove("open"); }
+    document.getElementById("close").addEventListener("click", close);
+    light.addEventListener("click", function (e) { if (e.target === light) close(); });
+  </script>
 </body>
 </html>
