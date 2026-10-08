@@ -94,28 +94,13 @@
       </div>
       <div class="upcoming">
         <h3>Coming up</h3>
-        <ul>
+        <ul id="next-list">
           <li><span class="when">Fri, Oct 9 · 2–4 pm</span><br><strong>Mahjong 102</strong><span class="where">Trillium Recreation</span></li>
           <li><span class="when">Sun, Oct 11 · 9–11 am</span><br><strong>Gen XX Platform Tennis</strong><span class="where">Eisenhower Recreation Center</span></li>
         </ul>
-        <details>
+        <details id="rest-wrap">
           <summary>Show the rest</summary>
-          <ul>
-          <li><span class="when">Every Sunday · 9–11 am</span><br><strong>Gen XX Platform Tennis</strong><span class="where">Eisenhower Recreation Center</span></li>
-          <li><span class="when">Every Sunday · 2–4 pm</span><br><strong>Southern Area Pickleball</strong><span class="where">Blanchard Recreation Center</span></li>
-          <li><span class="when">Thu, Oct 15 · 1:30–3:30 pm</span><br><strong>Fantasy Book Club</strong><span class="where">1176 Russell Loop</span></li>
-          <li><span class="when">Fri, Oct 16 · 2–4:30 pm</span><br><strong>Mahjong 102</strong><span class="where">Trillium Recreation</span></li>
-          <li><span class="when">Sun, Oct 18, 11 am – Tue, Oct 20, 1 pm</span><br><strong>Find Your Inner Goddess Retreat</strong><span class="where">Crystal River Plantation</span></li>
-          <li><span class="when">Sun, Oct 18 · 5–9 pm</span><br><strong>Solar Bears vs Florida Everglades</strong><span class="where">Kia Center, Orlando</span></li>
-          <li><span class="when">Mon, Oct 19 · 10:30 am–1 pm</span><br><strong>Operation Shoe Box</strong><span class="where">Lake Miona Recreation Center</span></li>
-          <li><span class="when">Sat, Oct 24 · 8:30–11 am</span><br><strong>Walk to End Alzheimer’s</strong><span class="where">Polo Field, The Villages</span></li>
-          <li><span class="when">Sat, Oct 24 · 6–9 pm</span><br><strong>Mad Hatter Party</strong><span class="where">Okahumpka Recreation Center</span></li>
-          <li><span class="when">Mon, Oct 26 · 5–8:30 pm</span><br><strong>Addicted to Love, The Musical 2</strong><span class="where">Ezell Recreation Center</span></li>
-          <li><span class="when">Tue, Oct 27 · 5–8 pm</span><br><strong>October Sunset Island Meet Up</strong><span class="where">Sunset Island at Eastport</span></li>
-          <li><span class="when">Fri, Oct 30 · 2–4 pm</span><br><strong>Mahjong 102</strong><span class="where">Trillium Recreation</span></li>
-          <li><span class="when">Sun, Nov 8 · 4–7 pm</span><br><strong>The Ultimate Wedding Reception Is Back</strong><span class="where">Holy Shmokes Lounge</span></li>
-          <li><span class="when">Mon, Nov 30 · 5–8 pm</span><br><strong>Gen X Holiday Purge Party</strong><span class="where">Palmer Legends Country Club</span></li>
-          </ul>
+          <ul id="rest-list"></ul>
         </details>
       </div>
     </section>
@@ -153,6 +138,124 @@
     <img id="big" alt="">
   </div>
   <script>
+    var ONCE = [
+      { start: "2026-10-09T14:00:00-04:00", end: "2026-10-09T16:00:00-04:00", title: "Mahjong 102", where: "Trillium Recreation" },
+      { start: "2026-10-15T13:30:00-04:00", end: "2026-10-15T15:30:00-04:00", title: "Fantasy Book Club", where: "1176 Russell Loop" },
+      { start: "2026-10-16T14:00:00-04:00", end: "2026-10-16T16:30:00-04:00", title: "Mahjong 102", where: "Trillium Recreation" },
+      { start: "2026-10-18T11:00:00-04:00", end: "2026-10-20T13:00:00-04:00", title: "Find Your Inner Goddess Retreat", where: "Crystal River Plantation", when: "Sun, Oct 18, 11 am – Tue, Oct 20, 1 pm" },
+      { start: "2026-10-18T17:00:00-04:00", end: "2026-10-18T21:00:00-04:00", title: "Solar Bears vs Florida Everglades", where: "Kia Center, Orlando" },
+      { start: "2026-10-19T10:30:00-04:00", end: "2026-10-19T13:00:00-04:00", title: "Operation Shoe Box", where: "Lake Miona Recreation Center" },
+      { start: "2026-10-24T08:30:00-04:00", end: "2026-10-24T11:00:00-04:00", title: "Walk to End Alzheimer’s", where: "Polo Field, The Villages" },
+      { start: "2026-10-24T18:00:00-04:00", end: "2026-10-24T21:00:00-04:00", title: "Mad Hatter Party", where: "Okahumpka Recreation Center" },
+      { start: "2026-10-26T17:00:00-04:00", end: "2026-10-26T20:30:00-04:00", title: "Addicted to Love, The Musical 2", where: "Ezell Recreation Center" },
+      { start: "2026-10-27T17:00:00-04:00", end: "2026-10-27T20:00:00-04:00", title: "October Sunset Island Meet Up", where: "Sunset Island at Eastport" },
+      { start: "2026-10-30T14:00:00-04:00", end: "2026-10-30T16:00:00-04:00", title: "Mahjong 102", where: "Trillium Recreation" },
+      { start: "2026-11-08T16:00:00-05:00", end: "2026-11-08T19:00:00-05:00", title: "The Ultimate Wedding Reception Is Back", where: "Holy Shmokes Lounge" },
+      { start: "2026-11-30T17:00:00-05:00", end: "2026-11-30T20:00:00-05:00", title: "Gen X Holiday Purge Party", where: "Palmer Legends Country Club" }
+    ];
+    var WEEKLY = [
+      { wd: 0, sh: 9, sm: 0, eh: 11, em: 0, title: "Gen XX Platform Tennis", where: "Eisenhower Recreation Center", standing: "Every Sunday · 9–11 am" },
+      { wd: 0, sh: 14, sm: 0, eh: 16, em: 0, title: "Southern Area Pickleball", where: "Blanchard Recreation Center", until: "2027-03-28T16:00:00-04:00", standing: "Every Sunday · 2–4 pm" }
+    ];
+    function ymd(date) {
+      var fmt = new Intl.DateTimeFormat("en-US", { timeZone: "America/New_York", hourCycle: "h23", year: "numeric", month: "2-digit", day: "2-digit", weekday: "short" });
+      var p = {};
+      fmt.formatToParts(date).forEach(function (part) { p[part.type] = part.value; });
+      return { y: +p.year, m: +p.month, d: +p.day, wd: { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 }[p.weekday] };
+    }
+    function zoned(y, m, d, h, min) {
+      var guess = new Date(Date.UTC(y, m - 1, d, h, min));
+      var fmt = new Intl.DateTimeFormat("en-US", { timeZone: "America/New_York", hourCycle: "h23", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit" });
+      var p = {};
+      fmt.formatToParts(guess).forEach(function (part) { p[part.type] = part.value; });
+      var asUTC = Date.UTC(+p.year, +p.month - 1, +p.day, (+p.hour) % 24, +p.minute, +p.second);
+      return new Date(guess.getTime() - (asUTC - guess.getTime()));
+    }
+    function clockParts(date) {
+      var fmt = new Intl.DateTimeFormat("en-US", { timeZone: "America/New_York", hour: "numeric", minute: "2-digit", hourCycle: "h12" });
+      var p = {};
+      fmt.formatToParts(date).forEach(function (part) { p[part.type] = part.value; });
+      return { num: p.hour + (p.minute === "00" ? "" : ":" + p.minute), period: String(p.dayPeriod).toLowerCase() };
+    }
+    function dayLabel(date) {
+      return new Intl.DateTimeFormat("en-US", { timeZone: "America/New_York", weekday: "short", month: "short", day: "numeric" }).format(date);
+    }
+    function formatSpan(start, end) {
+      var a = clockParts(start);
+      var b = clockParts(end);
+      var range = a.period === b.period ? a.num + "–" + b.num + " " + b.period : a.num + " " + a.period + "–" + b.num + " " + b.period;
+      return dayLabel(start) === dayLabel(end) ? dayLabel(start) + " · " + range : dayLabel(start) + ", " + a.num + " " + a.period + " – " + dayLabel(end) + ", " + b.num + " " + b.period;
+    }
+    function nextWeekly(rule, now) {
+      var until = rule.until ? new Date(rule.until) : null;
+      var i, probe, p, start, end;
+      for (i = 0; i < 10; i++) {
+        probe = new Date(now.getTime() + i * 24 * 60 * 60 * 1000);
+        p = ymd(probe);
+        if (p.wd !== rule.wd) continue;
+        end = zoned(p.y, p.m, p.d, rule.eh, rule.em);
+        if (until && end > until) return null;
+        if (end > now) {
+          start = zoned(p.y, p.m, p.d, rule.sh, rule.sm);
+          return { start: start.toISOString(), end: end.toISOString(), title: rule.title, where: rule.where, when: formatSpan(start, end) };
+        }
+      }
+      return null;
+    }
+    function li(ev) {
+      var item = document.createElement("li");
+      var when = document.createElement("span");
+      when.className = "when";
+      when.textContent = ev.when;
+      var title = document.createElement("strong");
+      title.textContent = ev.title;
+      var where = document.createElement("span");
+      where.className = "where";
+      where.textContent = ev.where;
+      item.appendChild(when);
+      item.appendChild(document.createElement("br"));
+      item.appendChild(title);
+      item.appendChild(where);
+      return item;
+    }
+    function fill(list, events) {
+      list.textContent = "";
+      events.forEach(function (ev) { list.appendChild(li(ev)); });
+    }
+    (function () {
+      var now = new Date();
+      var upcoming = [];
+      ONCE.forEach(function (ev) {
+        if (new Date(ev.end) <= now) return;
+        upcoming.push({ start: ev.start, title: ev.title, where: ev.where, when: ev.when || formatSpan(new Date(ev.start), new Date(ev.end)) });
+      });
+      WEEKLY.forEach(function (rule) {
+        var next = nextWeekly(rule, now);
+        if (next) upcoming.push(next);
+      });
+      upcoming.sort(function (a, b) { return new Date(a.start) - new Date(b.start); });
+      var next = upcoming.slice(0, 2);
+      var shown = {};
+      next.forEach(function (ev) { shown[ev.title + "|" + ev.when] = true; });
+      var rest = [];
+      WEEKLY.forEach(function (rule) {
+        if (nextWeekly(rule, now)) rest.push({ when: rule.standing, title: rule.title, where: rule.where });
+      });
+      ONCE.forEach(function (ev) {
+        if (new Date(ev.end) <= now) return;
+        var when = ev.when || formatSpan(new Date(ev.start), new Date(ev.end));
+        if (shown[ev.title + "|" + when]) return;
+        rest.push({ start: ev.start, when: when, title: ev.title, where: ev.where });
+      });
+      var nextList = document.getElementById("next-list");
+      var restList = document.getElementById("rest-list");
+      var restWrap = document.getElementById("rest-wrap");
+      if (!nextList) return;
+      if (next.length) fill(nextList, next);
+      else nextList.textContent = "Nothing coming up.";
+      if (restList) fill(restList, rest);
+      if (restWrap) restWrap.hidden = rest.length === 0;
+    })();
     var light = document.getElementById("lightbox");
     document.querySelectorAll("[data-full]").forEach(function (btn) {
       btn.addEventListener("click", function () {
