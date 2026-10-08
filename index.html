@@ -30,6 +30,18 @@
     h2 { font-size:2.2rem; }
     .cal { max-width:56rem; margin:1rem auto 0; background:var(--paper); border:1px solid var(--line); padding:.6rem; }
     iframe { width:100%; height:880px; border:0; background:var(--paper); }
+    .upcoming { max-width:40rem; margin:1.75rem auto 0; text-align:left; }
+    .upcoming h3 { font-family:"Cormorant Garamond", Georgia, serif; font-weight:500; font-size:2rem; text-align:center; margin:0 0 .9rem; }
+    .upcoming ul { list-style:none; padding:0; margin:0; }
+    .upcoming li { padding:.6rem 0; border-top:1px solid var(--line); }
+    .upcoming .when { color:var(--muted); font-size:.92rem; }
+    .upcoming .where { display:block; color:var(--muted); font-size:.9rem; }
+    .join { max-width:40rem; margin:0 auto; padding:0 1.25rem 3rem; }
+    .join h2 { text-align:center; }
+    .join ol { margin:1rem auto 0; padding-left:1.25rem; max-width:36rem; }
+    .join li { margin:.5rem 0; }
+    .join a, .acts .invite a { color:var(--blush); font-weight:600; }
+    .join p { text-align:center; color:var(--muted); margin:1rem 0 0; }
     form { max-width:32rem; margin:1rem auto 0; display:flex; flex-direction:column; gap:.6rem; }
     input { border:1px solid var(--line); background:var(--cream); padding:.8rem 1rem; text-align:center; font:inherit; }
     button { font:inherit; cursor:pointer; }
@@ -46,6 +58,7 @@
     .grid button { background:none; border:0; padding:0; width:100%; }
     .grid img { width:100%; aspect-ratio:1; object-fit:cover; object-position:top; border:1px solid var(--line); display:block; }
     .grid span { display:block; margin-top:.4rem; font-size:.68rem; line-height:1.2; }
+    .grid .when { margin-top:.15rem; color:var(--muted); font-size:.62rem; }
     footer { border-top:1px solid var(--line); text-align:center; padding:2rem 1rem; }
     footer .name { font-family:"Cormorant Garamond", Georgia, serif; font-style:italic; font-size:1.4rem; }
     footer a { color:var(--blush); font-weight:600; }
@@ -75,19 +88,49 @@
           src="https://calendar.google.com/calendar/embed?src=genxwomeninthevillages%40gmail.com&ctz=America%2FNew_York&mode=MONTH&showTitle=0&showPrint=0&showCalendars=0&height=880"
         ></iframe>
       </div>
+      <div class="upcoming">
+        <h3>Coming up</h3>
+        <ul>
+          <li><span class="when">Fri, Oct 9 · 2–4 pm</span><br><strong>Mahjong 102</strong><span class="where">Trillium Recreation</span></li>
+          <li><span class="when">Sun, Oct 11 · 9–11 am</span><br><strong>Gen XX Platform Tennis</strong><span class="where">Eisenhower Recreation Center</span></li>
+          <li><span class="when">Sun, Oct 11 · 2–4 pm</span><br><strong>Southern Area Pickleball</strong><span class="where">Blanchard Recreation Center</span></li>
+          <li><span class="when">Thu, Oct 15 · 1:30–3:30 pm</span><br><strong>Fantasy Book Club</strong><span class="where">1176 Russell Loop</span></li>
+          <li><span class="when">Fri, Oct 16 · 2–4:30 pm</span><br><strong>Mahjong 102</strong><span class="where">Trillium Recreation</span></li>
+          <li><span class="when">Sun, Oct 18 · 9–11 am</span><br><strong>Gen XX Platform Tennis</strong><span class="where">Eisenhower Recreation Center</span></li>
+          <li><span class="when">Sun, Oct 18, 11 am – Tue, Oct 20, 1 pm</span><br><strong>Find Your Inner Goddess Retreat</strong><span class="where">Crystal River Plantation</span></li>
+          <li><span class="when">Sun, Oct 18 · 2–4 pm</span><br><strong>Southern Area Pickleball</strong><span class="where">Blanchard Recreation Center</span></li>
+          <li><span class="when">Sun, Oct 18 · 5–9 pm</span><br><strong>Solar Bears vs Florida Everglades</strong><span class="where">Kia Center, Orlando</span></li>
+          <li><span class="when">Mon, Oct 19 · 10:30 am–1 pm</span><br><strong>Operation Shoe Box</strong><span class="where">Lake Miona Recreation Center</span></li>
+          <li><span class="when">Sat, Oct 24 · 8:30–11 am</span><br><strong>Walk to End Alzheimer’s</strong><span class="where">Polo Field, The Villages</span></li>
+          <li><span class="when">Sat, Oct 24 · 6–9 pm</span><br><strong>Mad Hatter Party</strong><span class="where">Okahumpka Recreation Center</span></li>
+          <li><span class="when">Sun, Oct 25 · 9–11 am</span><br><strong>Gen XX Platform Tennis</strong><span class="where">Eisenhower Recreation Center</span></li>
+          <li><span class="when">Sun, Oct 25 · 2–4 pm</span><br><strong>Southern Area Pickleball</strong><span class="where">Blanchard Recreation Center</span></li>
+          <li><span class="when">Mon, Oct 26 · 5–8:30 pm</span><br><strong>Addicted to Love, The Musical 2</strong><span class="where">Ezell Recreation Center</span></li>
+          <li><span class="when">Tue, Oct 27 · 5–8 pm</span><br><strong>October Sunset Island Meet Up</strong><span class="where">Sunset Island at Eastport</span></li>
+        </ul>
+      </div>
     </section>
     <section class="acts">
-      <p class="invite">Please join our Facebook page for full event details and to RSVP. *you must answer the three membership screening questions. Examples of a few of our activities:</p>
+      <p class="invite">Please join our <a href="https://www.facebook.com/groups/670601919303613">Facebook page</a> for full event details and to RSVP. *you must answer the <a href="membership.pdf">three membership screening questions</a>. Examples of a few of our activities:</p>
       <ul class="grid">
-        <li><button type="button" data-full="holiday.jpg"><img src="holiday.jpg" alt="Holiday party"><span>Holiday party</span></button></li>
-        <li><button type="button" data-full="shoebox.jpg"><img src="shoebox.jpg" alt="Operation Shoebox"><span>Operation Shoebox</span></button></li>
-        <li><button type="button" data-full="book.jpg"><img src="book.jpg" alt="Fantasy book club"><span>Fantasy book club</span></button></li>
+        <li><button type="button" data-full="holiday.jpg"><img src="holiday.jpg" alt="Holiday party"><span>Holiday party</span><span class="when">Nov 30, 5–8 pm</span></button></li>
+        <li><button type="button" data-full="shoebox.jpg"><img src="shoebox.jpg" alt="Operation Shoebox"><span>Operation Shoebox</span><span class="when">Oct 19, 10:30–1</span></button></li>
+        <li><button type="button" data-full="book.jpg"><img src="book.jpg" alt="Fantasy book club"><span>Fantasy book club</span><span class="when">Third Thursday, 1:30–3:30</span></button></li>
         <li><button type="button" data-full="cooking.jpg"><img src="cooking.jpg" alt="Cooking class"><span>Cooking class</span></button></li>
         <li><button type="button" data-full="pickle-central.jpg"><img src="pickle-central.jpg" alt="Central pickleball"><span>Central pickleball</span></button></li>
-        <li><button type="button" data-full="pickle-south.jpg"><img src="pickle-south.jpg" alt="Southern pickleball"><span>Southern pickleball</span></button></li>
-        <li><button type="button" data-full="mahjong.jpg"><img src="mahjong.jpg" alt="Mah Jongg"><span>Mah Jongg</span></button></li>
-        <li><button type="button" data-full="sunset.jpg"><img src="sunset.jpg" alt="Sunset Island meetup"><span>October Meetup</span></button></li>
+        <li><button type="button" data-full="pickle-south.jpg"><img src="pickle-south.jpg" alt="Southern pickleball"><span>Southern pickleball</span><span class="when">Sundays, 2–4 pm</span></button></li>
+        <li><button type="button" data-full="mahjong.jpg"><img src="mahjong.jpg" alt="Mah Jongg"><span>Mah Jongg</span><span class="when">Oct 9 & 16</span></button></li>
+        <li><button type="button" data-full="sunset.jpg"><img src="sunset.jpg" alt="Sunset Island meetup"><span>October Meetup</span><span class="when">Oct 27, 5–8 pm</span></button></li>
       </ul>
+    </section>
+    <section class="join">
+      <h2>How to join</h2>
+      <ol>
+        <li>Answer the <a href="membership.pdf">three membership screening questions</a>.</li>
+        <li>Join the <a href="https://www.facebook.com/groups/670601919303613">Facebook group</a>.</li>
+        <li>Show your driver's license and Villages photo ID so you can be added to the directory.</li>
+      </ol>
+      <p>The full rules are in <a href="membership.pdf">Membership Questions</a>.</p>
     </section>
   </main>
   <footer>
