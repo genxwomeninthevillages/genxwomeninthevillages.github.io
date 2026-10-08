@@ -15,6 +15,7 @@
     nav { max-width:72rem; margin:0 auto; padding:.75rem 1.25rem; display:flex; justify-content:space-between; align-items:center; }
     .mark { font-family:"Cormorant Garamond", Georgia, serif; font-size:1.35rem; text-decoration:none; color:inherit; }
     .mark em { color:var(--blush); font-style:italic; }
+    .nav-links { display:flex; gap:.4rem; flex-wrap:wrap; justify-content:flex-end; }
     .jump { font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; text-decoration:none; color:inherit; border:1px solid var(--line); padding:.4rem .7rem; }
     .hero { display:block; width:100%; max-width:56rem; height:auto; margin:0.75rem auto 0; }
     .intro { max-width:42rem; margin:0 auto; padding:3.5rem 1.25rem 1.5rem; text-align:center; }
@@ -55,7 +56,10 @@
   <header>
     <nav>
       <a class="mark" href="#top">Gen X Women <em>in The Villages</em></a>
-      <a class="jump" href="#this-month">This month</a>
+      <span class="nav-links">
+        <a class="jump" href="membership.pdf">Membership Questions</a>
+        <a class="jump" href="#this-month">This month</a>
+      </span>
     </nav>
   </header>
   <main id="top">
@@ -86,7 +90,8 @@
   <footer>
     <div class="name">Gen X Women in The Villages</div>
     <div class="kicker">Find your tribe</div>
-    <p style="margin-top:0.85rem"><a href="https://www.facebook.com/groups/670601919303613">Join the Facebook group</a></p>
+    <p style="margin-top:0.85rem"><a href="membership.pdf">Membership Questions</a></p>
+    <p style="margin-top:0.45rem"><a href="https://www.facebook.com/groups/670601919303613">Join the Facebook group</a></p>
   </footer>
   <div id="lightbox">
     <button id="close" type="button">Close</button>
