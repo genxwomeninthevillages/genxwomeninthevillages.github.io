@@ -63,14 +63,13 @@
       <p class="lede">What’s happening this month. Click an event for the time and place.</p>
     </section>
     <section id="this-month">
-      <h2>This month <button class="change" id="change" type="button" hidden>Change</button></h2>
-      <div id="frame" class="cal" hidden></div>
-      <form id="form">
-        <p class="note">Connect the group Google Calendar. Paste the embed link or the calendar email.</p>
-        <input id="cal" placeholder="Calendar email or embed link" autocomplete="off" spellcheck="false">
-        <button class="go" type="submit">Connect calendar</button>
-        <p class="err" id="err" hidden></p>
-      </form>
+      <h2>This month</h2>
+      <div class="cal">
+        <iframe
+          title="Gen X Women calendar, month view"
+          src="https://calendar.google.com/calendar/embed?src=genxwomeninthevillages%40gmail.com&ctz=America%2FNew_York&mode=MONTH&showTitle=0&showPrint=0&showCalendars=0"
+        ></iframe>
+      </div>
     </section>
     <section class="acts">
       <p>In the circle</p>
@@ -94,49 +93,6 @@
     <img id="big" alt="">
   </div>
   <script>
-    var KEY = "gx-calendar-src";
-    function toSrc(raw) {
-      var text = (raw || "").trim();
-      if (!text) return "";
-      var m = text.match(/src\s*=\s*["']([^"']+)["']/i);
-      if (m) text = m[1];
-      if (/^https?:\/\//i.test(text)) {
-        var url = new URL(text);
-        if (url.hostname.replace(/^www\./, "") !== "calendar.google.com") return "";
-        url.searchParams.set("ctz", "America/New_York");
-        url.searchParams.set("mode", "MONTH");
-        return url.toString();
-      }
-      if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(text)) {
-        return "https://calendar.google.com/calendar/embed?src=" + encodeURIComponent(text) + "&ctz=America%2FNew_York&mode=MONTH";
-      }
-      return "";
-    }
-    function show(src) {
-      document.getElementById("form").hidden = true;
-      document.getElementById("change").hidden = false;
-      var box = document.getElementById("frame");
-      box.hidden = false;
-      box.innerHTML = '<iframe title="Group calendar, month view" src="' + src.replace(/"/g, """) + '"></iframe>';
-    }
-    var saved = "";
-    try { saved = localStorage.getItem(KEY) || ""; } catch (e) {}
-    if (saved) show(saved);
-    document.getElementById("form").addEventListener("submit", function (e) {
-      e.preventDefault();
-      var next = toSrc(document.getElementById("cal").value);
-      var err = document.getElementById("err");
-      if (!next) { err.hidden = false; err.textContent = "Use a Google Calendar embed link, or the calendar email."; return; }
-      try { localStorage.setItem(KEY, next); } catch (e) {}
-      show(next);
-    });
-    document.getElementById("change").addEventListener("click", function () {
-      try { localStorage.removeItem(KEY); } catch (e) {}
-      document.getElementById("frame").hidden = true;
-      document.getElementById("frame").innerHTML = "";
-      document.getElementById("form").hidden = false;
-      this.hidden = true;
-    });
     var light = document.getElementById("lightbox");
     document.querySelectorAll("[data-full]").forEach(function (btn) {
       btn.addEventListener("click", function () {
