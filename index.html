@@ -193,11 +193,6 @@
       var raw = eventId + " genxwomeninthevillages@m";
       return "https://calendar.google.com/calendar/event?eid=" + btoa(raw).replace(/=+$/g, "");
     }
-    function weeklyLink(master, start) {
-      function pad(n) { return (n < 10 ? "0" : "") + n; }
-      var stamp = start.getUTCFullYear() + pad(start.getUTCMonth() + 1) + pad(start.getUTCDate()) + "T" + pad(start.getUTCHours()) + pad(start.getUTCMinutes()) + pad(start.getUTCSeconds()) + "Z";
-      return eventLink(master + "_" + stamp);
-    }
     function nextWeekly(rule, now) {
       var until = rule.until ? new Date(rule.until) : null;
       var i, probe, p, start, end;
@@ -209,7 +204,7 @@
         if (until && end > until) return null;
         if (end > now) {
           start = zoned(p.y, p.m, p.d, rule.sh, rule.sm);
-          return { start: start.toISOString(), end: end.toISOString(), title: rule.title, where: rule.where, when: formatSpan(start, end), url: weeklyLink(rule.master, start) };
+          return { start: start.toISOString(), end: end.toISOString(), title: rule.title, where: rule.where, when: formatSpan(start, end), url: eventLink(rule.master) };
         }
       }
       return null;
