@@ -36,6 +36,10 @@
     .upcoming li { padding:.6rem 0; border-top:1px solid var(--line); }
     .upcoming .when { color:var(--muted); font-size:.92rem; }
     .upcoming .where { display:block; color:var(--muted); font-size:.9rem; }
+    .upcoming summary { cursor:pointer; text-align:center; color:var(--blush); font-weight:600; padding:.75rem 0 .2rem; list-style:none; }
+    .upcoming summary::-webkit-details-marker { display:none; }
+    .upcoming summary::after { content:" \25BE"; }
+    .upcoming details[open] summary::after { content:" \25B4"; }
     .join { max-width:40rem; margin:0 auto; padding:0 1.25rem 3rem; }
     .join h2 { text-align:center; }
     .join ol { margin:1rem auto 0; padding-left:1.25rem; max-width:36rem; }
@@ -93,6 +97,10 @@
         <ul>
           <li><span class="when">Fri, Oct 9 · 2–4 pm</span><br><strong>Mahjong 102</strong><span class="where">Trillium Recreation</span></li>
           <li><span class="when">Sun, Oct 11 · 9–11 am</span><br><strong>Gen XX Platform Tennis</strong><span class="where">Eisenhower Recreation Center</span></li>
+        </ul>
+        <details>
+          <summary>Show the rest</summary>
+          <ul>
           <li><span class="when">Sun, Oct 11 · 2–4 pm</span><br><strong>Southern Area Pickleball</strong><span class="where">Blanchard Recreation Center</span></li>
           <li><span class="when">Thu, Oct 15 · 1:30–3:30 pm</span><br><strong>Fantasy Book Club</strong><span class="where">1176 Russell Loop</span></li>
           <li><span class="when">Fri, Oct 16 · 2–4:30 pm</span><br><strong>Mahjong 102</strong><span class="where">Trillium Recreation</span></li>
@@ -109,7 +117,8 @@
           <li><span class="when">Tue, Oct 27 · 5–8 pm</span><br><strong>October Sunset Island Meet Up</strong><span class="where">Sunset Island at Eastport</span></li>
           <li><span class="when">Fri, Oct 30 · 2–4 pm</span><br><strong>Mahjong 102</strong><span class="where">Trillium Recreation</span></li>
           <li><span class="when">Sun, Nov 8 · 1–7 pm</span><br><strong>The Ultimate Wedding Reception Is Back</strong><span class="where">My Sheridan Lounge</span></li>
-        </ul>
+          </ul>
+        </details>
       </div>
     </section>
     <section class="acts">
