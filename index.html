@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gen X Women in The Villages</title>
+  <meta name="description" content="Events and activities for Gen X women living in The Villages, Florida. Check the calendar for what's happening this month.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --coral: #FF6B6B;
+      --teal: #2EC4B6;
+      --deep-teal: #1A9B8E;
+      --warm-cream: #FFF8F0;
+      --soft-purple: #7B68A6;
+      --dark-text: #2D2A32;
+      --light-text: #5A5560;
+      --white: #FFFFFF;
+      --shadow: 0 10px 40px rgba(45, 42, 50, 0.12);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', system-ui, sans-serif;
+      background: linear-gradient(160deg, #FFF8F0 0%, #FFE8E0 40%, #E8F8F6 100%);
+      color: var(--dark-text);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    /* Decorative top bar */
+    .top-bar {
+      height: 6px;
+      background: linear-gradient(90deg, var(--coral), var(--teal), var(--soft-purple));
+    }
+
+    header {
+      text-align: center;
+      padding: 2.5rem 1.5rem 1.5rem;
+      position: relative;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--teal);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.9rem, 5vw, 2.8rem);
+      font-weight: 700;
+      color: var(--dark-text);
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+
+    h1 span {
+      color: var(--coral);
+    }
+
+    .subtitle {
+      font-size: 1.05rem;
+      color: var(--light-text);
+      max-width: 520px;
+      margin: 0 auto 0.25rem;
+    }
+
+    .location {
+      font-size: 0.95rem;
+      color: var(--deep-teal);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+    }
+
+    .location svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--deep-teal);
+    }
+
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 1rem 1.25rem 3rem;
+    }
+
+    .intro {
+      text-align: center;
+      background: var(--white);
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.75rem;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(46, 196, 182, 0.15);
+    }
+
+    .intro p {
+      color: var(--light-text);
+      font-size: 1rem;
+    }
+
+    .calendar-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 1.25rem;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 107, 107, 0.12);
+      overflow: hidden;
+    }
+
+    .calendar-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.85rem;
+      border-bottom: 2px solid #F0EDE8;
+    }
+
+    .calendar-header h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.35rem;
+      color: var(--dark-text);
+    }
+
+    .calendar-header .hint {
+      font-size: 0.85rem;
+      color: var(--light-text);
+      background: #F8F5F2;
+      padding: 0.3rem 0.75rem;
+      border-radius: 8px;
+    }
+
+    .calendar-wrapper {
+      position: relative;
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fafafa;
+    }
+
+    /* Responsive iframe container */
+    .calendar-wrapper iframe {
+      display: block;
+      width: 100%;
+      height: 650px;
+      border: none;
+      border-radius: 12px;
+    }
+
+    @media (max-width: 640px) {
+      .calendar-wrapper iframe {
+        height: 520px;
+      }
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1.5rem 2.5rem;
+      color: var(--light-text);
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--deep-teal);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-note {
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      opacity: 0.85;
+    }
+
+    /* Subtle decorative shapes */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.35;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .blob-1 {
+      width: 280px;
+      height: 280px;
+      background: var(--coral);
+      top: -80px;
+      right: -60px;
+    }
+
+    .blob-2 {
+      width: 220px;
+      height: 220px;
+      background: var(--teal);
+      bottom: 40%;
+      left: -80px;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar"></div>
+
+  <header>
+    <div class="blob blob-1"></div>
+    <div class="badge">Community Calendar</div>
+    <h1>Gen X Women <span>in The Villages</span></h1>
+    <p class="subtitle">Your go-to place for events, gatherings &amp; activities</p>
+    <p class="location">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+      The Villages, Florida
+    </p>
+  </header>
+
+  <main>
+    <div class="intro">
+      <p>Click any event on the calendar to see details, times, and locations. Updated monthly for Gen X women living in The Villages.</p>
+    </div>
+
+    <div class="calendar-card">
+      <div class="calendar-header">
+        <h2>This Month’s Events</h2>
+        <span class="hint">Click an event for details</span>
+      </div>
+
+      <div class="calendar-wrapper">
+        <!-- 
+          REPLACE the src below with your own Google Calendar embed code.
+          How to get it:
+          1. Go to Google Calendar → Settings for your calendar
+          2. Scroll to "Integrate calendar"
+          3. Copy the Embed code and paste the whole <iframe> here
+        -->
+        <iframe 
+          src="https://calendar.google.com/calendar/embed?height=650&wkst=1&bgcolor=%23ffffff&ctz=America%2FNew_York&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=1&showCalendars=0&showTz=0&mode=MONTH" 
+          style="border:0" 
+          width="100%" 
+          height="650" 
+          frameborder="0" 
+          scrolling="no"
+          title="Gen X Women in The Villages Events Calendar">
+        </iframe>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>Made with ♥ for Gen X women in The Villages</p>
+    <p class="footer-note">Have an event to add? Reach out to the group organizers.</p>
+  </footer>
+
+  <div class="blob blob-2"></div>
+</body>
+</html>
