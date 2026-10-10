@@ -171,6 +171,7 @@
       { id: "8mis81pci11k7dd8eem394op0s", start: "2026-10-18T11:00:00-04:00", end: "2026-10-20T13:00:00-04:00", title: "Find Your Inner Goddess Retreat", where: "Crystal River Plantation", when: "Sun, Oct 18, 11 am – Tue, Oct 20, 1 pm" },
       { id: "q56fmvhb4o40k7oec3qo7aadeo", start: "2026-10-18T17:00:00-04:00", end: "2026-10-18T21:00:00-04:00", title: "Solar Bears vs Florida Everglades", where: "Kia Center, Orlando" },
       { id: "5t4rr706u4f55oe2ddl768temk", start: "2026-10-19T10:30:00-04:00", end: "2026-10-19T13:00:00-04:00", title: "Operation Shoe Box", where: "Lake Miona Recreation Center" },
+      { id: "1vo5c64dcb1c6j56c9cdd9s2mk", start: "2026-10-22T13:00:00-04:00", end: "2026-10-22T15:00:00-04:00", title: "Pedicure Party!", where: "Q Nails & Spa, 2907 Traverse Trl" },
       { id: "nv6fllmt5sova672jehvrm37uo", start: "2026-10-24T08:30:00-04:00", end: "2026-10-24T11:00:00-04:00", title: "Walk to End Alzheimer’s", where: "Polo Field, The Villages" },
       { id: "shlagh3aqvrjl57e79u9ip4ta8", start: "2026-10-24T18:00:00-04:00", end: "2026-10-24T21:00:00-04:00", title: "Mad Hatter Party", where: "Okahumpka Recreation Center" },
       { id: "l8lp7dss9va2p03v5ogo4rkgu8", start: "2026-10-26T17:00:00-04:00", end: "2026-10-26T20:30:00-04:00", title: "Addicted to Love, The Musical 2", where: "Ezell Recreation Center" },
@@ -179,8 +180,7 @@
       { id: "3c11v1p54ab8dg80csgr5ulfb8", start: "2026-11-08T16:00:00-05:00", end: "2026-11-08T19:00:00-05:00", title: "The Ultimate Wedding Reception Is Back", where: "Holy Shmokes Lounge" },
       { id: "vocnommclgc0u31e9ducbtf1tk", start: "2026-11-11T16:20:00-05:00", end: "2026-11-11T18:15:00-05:00", title: "Movie Night! Drummer Boy", where: "Epic Theatres at The Villages" },
       { id: "q1lnkfhl6rd5pq20b8brqhlrnk", start: "2026-11-21T09:45:00-05:00", end: "2026-11-21T12:00:00-05:00", title: "Gen X Gives Back: Centsible Furnishings", where: "Centsible Furnishings, Summerville" },
-      { id: "fp9umae99fdgusj19h15t606p4", start: "2026-11-30T17:00:00-05:00", end: "2026-11-30T20:00:00-05:00", title: "Gen X Holiday Purge Party", where: "Palmer Legends Country Club" },
-      { id: "1vo5c64dcb1c6j56c9cdd9s2mk", start: "2026-10-22T13:00:00-04:00", end: "2026-10-22T15:00:00-04:00", title: "Pedicure Party!", where: "Q Nails & Spa, 2907 Traverse Trl" }
+      { id: "fp9umae99fdgusj19h15t606p4", start: "2026-11-30T17:00:00-05:00", end: "2026-11-30T20:00:00-05:00", title: "Gen X Holiday Purge Party", where: "Palmer Legends Country Club" }
     ];
     var WEEKLY = [
       { master: "hs3au8ifrlfbjbqn4ghtbbcndk", wd: 0, sh: 9, sm: 0, eh: 11, em: 0, title: "Gen XX Platform Tennis", where: "Eisenhower Recreation Center", standing: "Every Sunday · 9–11 am" },
@@ -296,6 +296,11 @@
         var when = ev.when || formatSpan(new Date(ev.start), new Date(ev.end));
         if (shown[ev.title + "|" + when]) return;
         rest.push({ start: ev.start, when: when, title: ev.title, where: ev.where, desc: DESCS[ev.id] || "" });
+      });
+      rest.sort(function (a, b) {
+        var as = a.start ? new Date(a.start) : new Date(now.getTime() + 365*24*60*60*1000);
+        var bs = b.start ? new Date(b.start) : new Date(now.getTime() + 365*24*60*60*1000);
+        return as - bs;
       });
       var nextList = document.getElementById("next-list");
       var restList = document.getElementById("rest-list");
