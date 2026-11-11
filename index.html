@@ -188,6 +188,7 @@
       { id: "qnlo56n6f8f21f24uu328q32co", start: "2026-11-12T18:30:00-05:00", end: "2026-11-12T20:00:00-05:00", title: "Gen X Women Line Dancing Level 1", where: "Homestead Rec Center" },
       { id: "vejjva6r830k8keq1q7d651j2o", start: "2026-11-12T13:30:00-05:00", end: "2026-11-12T15:30:00-05:00", title: "Gen X Fantasy Book Club", where: "1176 Russell Loop" },
       { id: "ngi5grfckvt80u7avjn0g2cj90", start: "2026-12-07T12:00:00-05:00", end: "2026-12-07T15:00:00-05:00", title: "Operation Shoebox Bingo", where: "Lake Miona Recreation Center" },
+      { id: "3oc9nr0dksou4422qqjldcoob4", start: "2026-12-06T13:00:00-05:00", end: "2026-12-06T16:00:00-05:00", title: "Gen X Christmas Mahjong Party", where: "Village of Osceola Hills (Kim's house)" },
     ];
     var WEEKLY = [
       { master: "hs3au8ifrlfbjbqn4ghtbbcndk", wd: 0, sh: 9, sm: 0, eh: 11, em: 0, title: "Gen XX Platform Tennis", where: "Eisenhower Recreation Center", standing: "Every Sunday · 9–11 am" },
@@ -199,7 +200,8 @@
   "9q3fuig6i69nl78rjvh3rce8l8": "Beginner Friendly Mahjong 102 at Trillium Recreation. RSVP if definitely coming. Rec center needs estimate for tables. Bring nametag, tumbler, NMJL card. Sets provided. Trillium Recreation, 2660 Trillium Ridge. RSVP on the Facebook group.",
   "9khcgdliecq9aiuom2352cp9ec": "Southern Executive Golf Courses Tee Times Request. Limited to 16 players. Fill out Villages ID form: https://forms.gle/cirdJusmu7FpZzrz5. Details on Facebook event.",
   "fnigqlvj19f6nverof867jeo7k": "Mahjong 102 at Trillium Recreation. Beginner through advanced welcome. RSVP on the Facebook group.",
-  "9hiahad1e5e84kmokm25cnumnk": "A Ladies' Lantern-Making Afternoon with Linda Drummond. Sip, Create & Connect! Join us for a fun and intimate gathering at Linda Drummond's home creating beautiful lanterns while enjoying wine, conversation, and connecting with other amazing women. You don't have to be crafty! Cost $30 per person. Limited to 12 ladies. Wine served. Payments directly to Linda Drummond (see Facebook for Venmo). Private event by Chelsea Miranda Stanfield and Gen X Women in The Villages."
+  "9hiahad1e5e84kmokm25cnumnk": "A Ladies' Lantern-Making Afternoon with Linda Drummond. Sip, Create & Connect! Join us for a fun and intimate gathering at Linda Drummond's home creating beautiful lanterns while enjoying wine, conversation, and connecting with other amazing women. You don't have to be crafty! Cost $30 per person. Limited to 12 ladies. Wine served. Payments directly to Linda Drummond (see Facebook for Venmo). Private event by Chelsea Miranda Stanfield and Gen X Women in The Villages.",
+  "3oc9nr0dksou4422qqjldcoob4": "Christmas mah-jongg party at Kim's house in the Village of Osceola Hills. Limit 24 ladies — first 24 to fill out the Google form get a spot: https://forms.gle/7FpBeV7zzQ56KxYx6. Bring a small dish to share. Festive attire encouraged. Bring your 2026 Mahjong card. Fun holiday surprises planned. Co-hosted by Kim Rubin and Julie Shore. Address is in the signup form.",
 };
     function ymd(date) {
       var fmt = new Intl.DateTimeFormat("en-US", { timeZone: "America/New_York", hourCycle: "h23", year: "numeric", month: "2-digit", day: "2-digit", weekday: "short" });
@@ -225,28 +227,23 @@
       return new Intl.DateTimeFormat("en-US", { timeZone: "America/New_York", weekday: "short", month: "short", day: "numeric" }).format(date);
     }
     function formatSpan(start, end) {
-      var a = clockParts(start);
-      var b = clockParts(end);
-      var range = a.period === b.period ? a.num + "–" + b.num + " " + b.period : a.num + " " + a.period + "–" + b.num + " " + b.period;
-      return dayLabel(start) === dayLabel(end) ? dayLabel(start) + " · " + range : dayLabel(start) + ", " + a.num + " " + a.period + " – " + dayLabel(end) + ", " + b.num + " " + b.period;
-    }
-    function eventLink(eventId) {
-      var raw = eventId + " genxwomeninthevillages@m";
-      return "https://calendar.google.com/calendar/event?eid=" + btoa(raw).replace(/=+$/g, "");
+      var a = clockParts(start), b = clockParts(end);
+      var same = a.period === b.period;
+      return dayLabel(start) + " · " + a.num + (same ? "" : " " + a.period) + "–" + b.num + " " + b.period;
     }
     function nextWeekly(rule, now) {
       var until = rule.until ? new Date(rule.until) : null;
-      var i, probe, p, start, end;
-      for (i = 0; i < 10; i++) {
-        probe = new Date(now.getTime() + i * 24 * 60 * 60 * 1000);
-        p = ymd(probe);
-        if (p.wd !== rule.wd) continue;
-        end = zoned(p.y, p.m, p.d, rule.eh, rule.em);
+      var probe = new Date(now.getTime() - 36*60*60*1000);
+      for (var i = 0; i < 14; i++) {
+        var p = ymd(probe);
+        if (p.wd !== rule.wd) { probe = new Date(probe.getTime() + 24*60*60*1000); continue; }
+        var end = zoned(p.y, p.m, p.d, rule.eh, rule.em);
         if (until && end > until) return null;
         if (end > now) {
-          start = zoned(p.y, p.m, p.d, rule.sh, rule.sm);
+          var start = zoned(p.y, p.m, p.d, rule.sh, rule.sm);
           return { start: start.toISOString(), end: end.toISOString(), title: rule.title, where: rule.where, when: formatSpan(start, end), desc: DESCS[rule.master] || "" };
         }
+        probe = new Date(probe.getTime() + 24*60*60*1000);
       }
       return null;
     }
@@ -300,8 +297,8 @@
       next.forEach(function (ev) { shown[ev.title + "|" + ev.when] = true; });
       var rest = [];
       WEEKLY.forEach(function (rule) {
-        var coming = nextWeekly(rule, now);
-        if (coming) rest.push({ when: rule.standing, title: rule.title, where: rule.where, desc: coming.desc });
+        if (shown[rule.title + "|" + rule.standing]) return;
+        rest.push({ start: null, when: rule.standing, title: rule.title, where: rule.where, desc: DESCS[rule.master] || "" });
       });
       ONCE.forEach(function (ev) {
         if (new Date(ev.end) <= now) return;
