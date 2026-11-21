@@ -217,7 +217,7 @@
       var p = {};
       fmt.formatToParts(guess).forEach(function (part) { p[part.type] = part.value; });
       var asUTC = Date.UTC(+p.year, +p.month - 1, +p.day, (+p.hour) % 24, +p.minute, +p.second);
-      return new Date(guess.getTime() + (guess.getTime() - asUTC));
+      return new Date(guess.getTime() - (asUTC - guess.getTime()));
     }
     function clockParts(date) {
       var fmt = new Intl.DateTimeFormat("en-US", { timeZone: "America/New_York", hour: "numeric", minute: "2-digit", hourCycle: "h12" });
@@ -279,14 +279,15 @@
       return item;
     }
     function fill(list, events) {
-      list.innerHTML = "";
+      list.textContent = "";
       events.forEach(function (ev) { list.appendChild(li(ev)); });
     }
     (function () {
       var now = new Date();
       var upcoming = [];
       ONCE.forEach(function (ev) {
-        if (new Date(ev.end) > now) upcoming.push({ start: ev.start, end: ev.end, title: ev.title, where: ev.where, when: ev.when || formatSpan(new Date(ev.start), new Date(ev.end)), desc: DESCS[ev.id] || "" });
+        if (new Date(ev.end) <= now) return;
+        upcoming.push({ start: ev.start, title: ev.title, where: ev.where, desc: DESCS[ev.id] || "", when: ev.when || formatSpan(new Date(ev.start), new Date(ev.end)) });
       });
       WEEKLY.forEach(function (rule) {
         var next = nextWeekly(rule, now);
